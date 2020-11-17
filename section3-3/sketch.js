@@ -14,9 +14,13 @@ function setup(){
 }
 
 function calendar(y, m){
+  balloon(y);
   let dow = dayOfWeek(y, m, 1);
   for(let d = 1; d <= daysInMonth(y, m); d++){
-    // BLANK[3] (hint: まずは daysInYear, dayOfWeek を作ろう)
+    fill(0);
+    text(dayOfWeekAsString(d),d*10,40)
+    text(d,d*10,60);
+     //BLANK[3] (hint: まずは daysInYear, dayOfWeek を作ろう)
   }
 }
 
@@ -25,7 +29,7 @@ function isLeapYear(y){
 }
 
 function daysInYear(y){
-  // BLANK[1]
+  (y % 4 == 0) && (y % 100 != 0) || (y % 400 == 0)?365:366;
 }
 
 function daysInMonth(y, m){
@@ -49,10 +53,35 @@ function dayOfYear(y, m, d){
 }
 
 function dayOfWeek(y, m, d){
-  // BLANK[2]
+    if (dayOfYear(1995,1,1)-dayOfYear(y,m,d)%7==0){
+      return "日"};
+    if (dayOfYear(1995,1,1)-dayOfYear(y,m,d)%7==1) {
+      return "月"};
+    if (dayOfYear(1995,1,1)-dayOfYear(y,m,d)%7==2) {
+      return "火"};
+    if (dayOfYear(1995,1,1)-dayOfYear(y,m,d)%7==3) {
+      return "水"};
+    if (dayOfYear(1995,1,1)-dayOfYear(y,m,d)%7==4) {
+      return "木"};
+    if (dayOfYear(1995,1,1)-dayOfYear(y,m,d)%7==5) {
+      return "金"};
+    if (dayOfYear(1995,1,1)-dayOfYear(y,m,d)%7==6) {
+      return "土"};
 }
 
 function dayOfWeekAsString(dow){
   const a = ["日", "月", "火", "水", "木", "金", "土", "日"];
   return a[dow];
+}
+
+
+function balloon(t){
+  let w = textWidth(t);
+  let h = textAscent() + textDescent();
+  let p = 2;
+  noStroke();
+  fill(0,222,0);
+  rect(0, 0, w + p * 2, h + p * 2);
+  fill(255);
+  text(t, p, h-p );
 }
