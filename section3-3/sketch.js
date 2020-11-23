@@ -16,6 +16,7 @@ function setup(){
 function calendar(y, m){
   balloon(y);
   let dow = dayOfWeek(y, m, 1);
+  console.log(dayOfWeekAsString(dow));
   for(let d = 1; d <= daysInMonth(y, m); d++){
     fill(0);
     text(dayOfWeekAsString(d),d*10,40)

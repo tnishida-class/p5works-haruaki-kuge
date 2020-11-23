@@ -18,3 +18,19 @@ function draw(){
   fill(255,0,0);
   ellipse(width / 2, height / 2, i);
 }
+
+function keyPressed(){
+  if(key == " "){
+    count = count/2;
+    cycle = cycle/2;
+    i = i/2;
+   }
+}
+
+function keyReleased() {
+  if(key == " "){
+    count = count*2
+    cycle = cycle*2
+    i = i*2;
+  }
+}
